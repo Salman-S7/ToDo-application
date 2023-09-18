@@ -7,7 +7,7 @@
 <title>To do</title>
 </head>
 <body>
-<h1>welcome to todos page</h1>
+<h1>welcome ${name} to todos page</h1>
 	<p>To do s are ${todos}</p>
 </body>
 </html>
