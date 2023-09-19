@@ -29,6 +29,7 @@ public class LoginController {
 			map.put("name", name);
 			return "welcome";
 		} else {
+			map.put("errorMessage", "Invalid Credentials please try again");
 			return "login";
 		}
 	}

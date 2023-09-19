@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/webjars/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+
 <title>To do</title>
 </head>
 <body>
+<div class="container">
+
 <h1>welcome ${name} to todos page</h1>
 	<h2>Todos are</h2>
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -31,6 +35,10 @@
 		</tbody>
 		
 	</table>
+	<a href="todo" class="btn btn-success">Add Todo</a>
+	<script src="webjars/jquery/3.7.0/jquery.min.js"></script>
+		<script src="webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+</div>
 	
 </body>
 </html>

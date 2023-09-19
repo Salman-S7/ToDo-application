@@ -1,11 +1,13 @@
 <html>
 <head>
 <title>Welcome</title>
+<link href="/webjars/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2>welcome to home ${name}
-
-</h2>
+<div class="container">
+<p class="h1">welcome to home ${name}
+</p>
 <a href="todos">see todos</a>
+</div>
 </body>
 </html>
