@@ -43,7 +43,8 @@ public class TodoController {
 		if (bindingResult.hasErrors()) {
 			return "todo";
 		}
-		todoService.addTodo((String) map.get("name"), todo.getDescription(), LocalDate.now().plusYears(1), false);
+		System.out.println(todo.getTargetDate());
+		todoService.addTodo((String) map.get("name"), todo.getDescription(), todo.getTargetDate(), false);
 		return "redirect:todos";
 	}
 
@@ -53,4 +54,22 @@ public class TodoController {
 		return "redirect:todos";
 	}
 
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String showUpdateToDo(@RequestParam int id, ModelMap map) {
+		Todo todo = todoService.findById(id);
+		map.addAttribute("todo", todo);
+		return "todo";
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateTodo(ModelMap map, @Valid Todo todo, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return "todo";
+		}
+		String name = (String) map.getAttribute("name");
+		todo.setUsername(name);
+		todoService.updateTodo(todo);
+		return "redirect:todos";
+	}
 }

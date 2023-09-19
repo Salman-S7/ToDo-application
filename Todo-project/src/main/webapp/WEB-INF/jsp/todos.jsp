@@ -18,16 +18,16 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Description</th>
 				<th>Target Date</th>
 				<th>Is Done?</th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${todos}" var = "todo">
 				<tr>
-					<td>${todo.id}</td>
 					<td>${todo.description}</td>
 					<td>${todo.targetDate}</td>
 					<td>${todo.done}</td>
@@ -40,7 +40,7 @@
 	</table>
 	<a href="todo" class="btn btn-success">Add Todo</a>
 	<script src="webjars/jquery/3.7.0/jquery.min.js"></script>
-		<script src="webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+	<script src="webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
 </div>
 	
 </body>
