@@ -14,9 +14,8 @@
 	<form method="post">
 	Enter Desription:<br>
 	<textarea class="form-control mb-3" rows="5" cols="50" name="desc"></textarea>
-		<a href="todos" class="btn btn-primary">ADD TODO</a>
+		<input type="submit" class="btn btn-primary">
 	</form>
 </div>
-
 </body>
 </html>
