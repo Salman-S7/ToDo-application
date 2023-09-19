@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<%@ include file="navbar.jsp"%>
 <p class="container h2 mt-5">Add Todo</p>
 <div class="container mt-2">
 	<form:form method="post" modelAttribute="todo">
