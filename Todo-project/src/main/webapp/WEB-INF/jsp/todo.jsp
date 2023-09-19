@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +13,13 @@
 <body>
 <p class="container h2 mt-5">Add Todo</p>
 <div class="container mt-2">
-	<form method="post">
+	<form:form method="post" modelAttribute="todo">
 	Enter Desription:<br>
-	<textarea class="form-control mb-3" rows="5" cols="50" name="desc"></textarea>
+	<form:errors path="description" cssClass="text-warning"></form:errors>
+	<form:textarea class="form-control mb-3" rows="5" cols="50"
+	required="required" path="description"></form:textarea>
 		<input type="submit" class="btn btn-primary">
-	</form>
+	</form:form>
 </div>
 </body>
 </html>

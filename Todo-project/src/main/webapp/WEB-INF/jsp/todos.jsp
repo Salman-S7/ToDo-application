@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Id</th>
+				<th>Sr no.</th>
 				<th>Description</th>
 				<th>Target Date</th>
 				<th>Is Done?</th>

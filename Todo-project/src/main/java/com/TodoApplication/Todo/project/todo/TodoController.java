@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("name")
@@ -28,13 +30,19 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "todo", method = RequestMethod.GET)
-	public String showTodoPage() {
+	public String showTodoPage(ModelMap map) {
+		Todo todo = new Todo(0, (String) map.get("name"), "", LocalDate.now().plusYears(1), false);
+		map.put("todo", todo);
 		return "todo";
 	}
 
 	@RequestMapping(value = "todo", method = RequestMethod.POST)
-	public String addTodo(@RequestParam String desc, ModelMap map) {
-		todoService.addTodo((String) map.get("name"), desc, LocalDate.now().plusYears(1), false);
+	public String addTodo(ModelMap map, @Valid Todo todo, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return "todo";
+		}
+		todoService.addTodo((String) map.get("name"), todo.getDescription(), LocalDate.now().plusYears(1), false);
 		return "redirect:todos";
 	}
 
