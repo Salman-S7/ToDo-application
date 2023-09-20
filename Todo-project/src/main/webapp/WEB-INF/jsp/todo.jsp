@@ -23,6 +23,7 @@
 			<form:input type="date" path="targetDate" required="required"></form:input>
 			<input type="submit" class="btn btn-primary">
 		</fieldset>
+		<form:input type="hidden" path="done" value="false"></form:input>
 	</form:form>
 </div>
 </body>

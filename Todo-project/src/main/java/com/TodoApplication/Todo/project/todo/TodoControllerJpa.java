@@ -47,20 +47,22 @@ public class TodoControllerJpa {
 		if (bindingResult.hasErrors()) {
 			return "todo";
 		}
-		System.out.println(todo.getTargetDate());
-		todoService.addTodo(getLoggedInUserName(map), todo.getDescription(), todo.getTargetDate(), false);
+		todo.setUsername(getLoggedInUserName(map));
+		repository.save(todo);
+		// todoService.addTodo(getLoggedInUserName(map), todo.getDescription(),
+		// todo.getTargetDate(), false);
 		return "redirect:todos";
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id) {
-		todoService.deleteById(id);
+		repository.deleteById(id);
 		return "redirect:todos";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String showUpdateToDo(@RequestParam int id, ModelMap map) {
-		Todo todo = todoService.findById(id);
+		Todo todo = repository.findById(id).get();
 		map.addAttribute("todo", todo);
 		return "todo";
 	}
@@ -73,7 +75,7 @@ public class TodoControllerJpa {
 		}
 		String name = getLoggedInUserName(map);
 		todo.setUsername(name);
-		todoService.updateTodo(todo);
+		repository.save(todo);
 		return "redirect:todos";
 	}
 
