@@ -7,7 +7,6 @@
     </a>  
   </div>  
   <div class="d-flex me-4">     
-          <a class="nav-link active me-4" aria-current="page" href="login">Login</a>
           <a class="nav-link me-4" href="todos">See ToDos</a>
           <a class="nav-link me-4" href="todo">Add ToDo</a>
           <a class="nav-link me-4" href="logout">Logout</a>

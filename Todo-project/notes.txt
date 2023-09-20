@@ -1,0 +1,13 @@
+completed the core functionalities !!! 
+pretty happy with that but there is lot more room for improving upon that 
+==> things to improve are 
+  1) most important to be able to sign up and be there multiple users 
+  	1.1) for this purpose you have to make changes in some core functionality 
+  	1.2) add another jsp page
+  	1.3) make changes in the db ie. create another one table and add foregin key to todos table that will point out which user have adde that thing 
+  2) show to do as the cards which will be more asthetic 
+  3) add done checkbox when user will click that then that todo will vanish from to do list
+  4) sorting of todos on the basis of differnet priorities 
+  5) more esthetics to the website 
+  6) deploy it on the Internet
+  
