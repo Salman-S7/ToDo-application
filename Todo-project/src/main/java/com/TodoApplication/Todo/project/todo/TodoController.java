@@ -3,6 +3,8 @@ package com.TodoApplication.Todo.project.todo;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,21 +25,16 @@ public class TodoController {
 		this.todoService = todoService;
 	}
 
-	@RequestMapping("/")
-	public String goToHomePage() {
-		return "home";
-	}
-
 	@RequestMapping("todos")
 	public String getTodos(ModelMap map) {
-		List<Todo> list = todoService.getTodos();
+		List<Todo> list = todoService.getTodosByUserName(getLoggedInUserName(map));
 		map.addAttribute("todos", list);
 		return "todos";
 	}
 
 	@RequestMapping(value = "todo", method = RequestMethod.GET)
 	public String showTodoPage(ModelMap map) {
-		Todo todo = new Todo(0, (String) map.get("name"), "", LocalDate.now().plusYears(1), false);
+		Todo todo = new Todo(0, getLoggedInUserName(map), "", LocalDate.now().plusYears(1), false);
 		map.put("todo", todo);
 		return "todo";
 	}
@@ -49,7 +46,7 @@ public class TodoController {
 			return "todo";
 		}
 		System.out.println(todo.getTargetDate());
-		todoService.addTodo((String) map.get("name"), todo.getDescription(), todo.getTargetDate(), false);
+		todoService.addTodo(getLoggedInUserName(map), todo.getDescription(), todo.getTargetDate(), false);
 		return "redirect:todos";
 	}
 
@@ -72,9 +69,14 @@ public class TodoController {
 		if (bindingResult.hasErrors()) {
 			return "todo";
 		}
-		String name = (String) map.getAttribute("name");
+		String name = getLoggedInUserName(map);
 		todo.setUsername(name);
 		todoService.updateTodo(todo);
 		return "redirect:todos";
+	}
+
+	private String getLoggedInUserName(ModelMap map) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
 	}
 }

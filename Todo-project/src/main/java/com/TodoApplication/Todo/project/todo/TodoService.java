@@ -17,8 +17,9 @@ public class TodoService {
 		todos.add(new Todo(++todoCounter, "salman", "earn money in gsoc", LocalDate.now().plusYears(2), false));
 	}
 
-	public List<Todo> getTodos() {
-		return todos;
+	public List<Todo> getTodosByUserName(String userName) {
+		Predicate<? super Todo> predicate = todo -> todo.getUsername().equals(userName);
+		return todos.stream().filter(predicate).toList();
 	}
 
 	public void addTodo(String userName, String descrptoin, LocalDate targetDate, boolean done) {
