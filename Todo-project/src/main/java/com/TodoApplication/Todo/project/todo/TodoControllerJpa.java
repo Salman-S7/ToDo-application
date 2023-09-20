@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +15,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 
-//@Controller
+@Controller
 @SessionAttributes("name")
-public class TodoController {
+public class TodoControllerJpa {
+	private TodoRepository repository;
 	private TodoService todoService;
 
-	public TodoController(TodoService todoService) {
+	public TodoControllerJpa(TodoService todoService, TodoRepository repository) {
 		super();
 		this.todoService = todoService;
+		this.repository = repository;
 	}
 
 	@RequestMapping("todos")
 	public String getTodos(ModelMap map) {
-		List<Todo> list = todoService.getTodosByUserName(getLoggedInUserName(map));
+		List<Todo> list = repository.findByUsername(getLoggedInUserName(map));
 		map.addAttribute("todos", list);
 		return "todos";
 	}
