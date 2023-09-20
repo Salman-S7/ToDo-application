@@ -24,7 +24,6 @@ public class LoginController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String goToWelcomePage(@RequestParam String name, @RequestParam String password, ModelMap map) {
-		System.out.println(name);
 		if (authenticationService.authenticate(name, password)) {
 			map.put("name", name);
 			return "welcome";

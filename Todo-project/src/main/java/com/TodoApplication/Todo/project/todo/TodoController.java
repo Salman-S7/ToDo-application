@@ -23,6 +23,11 @@ public class TodoController {
 		this.todoService = todoService;
 	}
 
+	@RequestMapping("/")
+	public String goToHomePage() {
+		return "home";
+	}
+
 	@RequestMapping("todos")
 	public String getTodos(ModelMap map) {
 		List<Todo> list = todoService.getTodos();
