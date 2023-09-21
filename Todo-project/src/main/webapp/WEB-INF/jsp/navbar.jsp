@@ -11,6 +11,5 @@
           <a class="nav-link me-4" href="todo">Add ToDo</a>
           <a class="nav-link me-4" href="logout">Logout</a>
  </div>
-   
   </div>
 </nav>

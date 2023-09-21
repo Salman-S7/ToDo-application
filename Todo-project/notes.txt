@@ -8,6 +8,6 @@ pretty happy with that but there is lot more room for improving upon that
   2) show to do as the cards which will be more asthetic 
   3) add done checkbox when user will click that then that todo will vanish from to do list
   4) sorting of todos on the basis of differnet priorities 
-  5) more esthetics to the website 
+  5) more esthetics to the website (to do can be shown in form of tables)
   6) deploy it on the Internet
   
