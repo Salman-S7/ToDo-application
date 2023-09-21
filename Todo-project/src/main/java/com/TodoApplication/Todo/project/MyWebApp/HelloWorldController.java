@@ -12,7 +12,7 @@ public class HelloWorldController {
 	}
 
 	@RequestMapping("hii")
-	@ResponseBody
+	@ResponseBody // when you are writing html in form of string
 	public StringBuffer sayHii() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("<html>");
